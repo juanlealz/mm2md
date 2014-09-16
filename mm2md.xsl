@@ -65,6 +65,40 @@ title: </xsl:text>
          <xsl:with-param name="bullet" select="'1. '"/>
     </xsl:apply-templates>
 </xsl:template>
+<xsl:template match="node[@COLOR='#000005']" mode="bullet">
+    <xsl:param name="indent" />
+    <xsl:param name="bullet" />
+    <xsl:value-of select="$indent"/>
+    <xsl:value-of select="$bullet"/>
+    <xsl:apply-templates select="." mode="text"/>
+    <xsl:text>
+</xsl:text>
+    <!-- Continue processing children-->
+    <xsl:apply-templates mode="bullet">
+         <xsl:with-param name="bullet" select="'- '"/>
+         <xsl:with-param name="indent">
+              <xsl:copy-of select="$tab"/>
+              <xsl:value-of select="$indent"/>
+         </xsl:with-param>
+    </xsl:apply-templates>
+</xsl:template>
+<xsl:template match="node[@COLOR='#000006']" mode="bullet">
+    <xsl:param name="indent" />
+    <xsl:param name="bullet" />
+    <xsl:value-of select="$indent"/>
+    <xsl:value-of select="$bullet"/>
+    <xsl:apply-templates select="." mode="text"/>
+    <xsl:text>
+</xsl:text>
+    <!-- Continue processing children-->
+    <xsl:apply-templates mode="bullet">
+         <xsl:with-param name="bullet" select="'1. '"/>
+         <xsl:with-param name="indent">
+              <xsl:copy-of select="$tab"/>
+              <xsl:value-of select="$indent"/>
+         </xsl:with-param>
+    </xsl:apply-templates>
+</xsl:template>
 <xsl:template match="node" mode="bullet">
     <xsl:param name="indent" />
     <xsl:param name="bullet" />

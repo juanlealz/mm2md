@@ -25,6 +25,18 @@
 <node CREATED="1410878146272" ID="ID_1291811253" MODIFIED="1410878152384" TEXT="Quisque efficitur risus nec rhoncus luctus."/>
 </node>
 <node CREATED="1410883122841" ID="ID_152339967" MODIFIED="1410883122843" TEXT="Vestibulum nisl massa, posuere eu nulla a, vulputate porttitor dui. Pellentesque cursus dui id purus molestie, et auctor purus condimentum. In nisi quam, ullamcorper vel condimentum vel, posuere a ante. Mauris est arcu, feugiat vel metus ac, porttitor bibendum ex."/>
+<node COLOR="#000005" CREATED="1410877922385" ID="ID_212432716" MODIFIED="1410878098080" TEXT="Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.">
+<icon BUILTIN="text_list_bullets"/>
+<node CREATED="1410877928912" ID="ID_1951733739" LINK="http://www.lipsum.com/" MODIFIED="1410878897539" TEXT="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."/>
+<node CREATED="1410877935264" ID="ID_1256380163" MODIFIED="1410877935265" TEXT="Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.">
+<node COLOR="#000006" CREATED="1410878152385" ID="ID_354602641" MODIFIED="1410886722552" TEXT="Mauris nec nunc eleifend, finibus justo id, finibus ex.">
+<icon BUILTIN="text_list_numbers"/>
+<node CREATED="1410881491927" ID="ID_656271602" MODIFIED="1410883118337" TEXT="Nam consequat augue in pharetra elementum."/>
+<node CREATED="1410883118343" ID="ID_790982497" MODIFIED="1410883122841" TEXT="In vel felis vel ipsum malesuada volutpat."/>
+</node>
+<node CREATED="1410881486072" ID="ID_883446496" MODIFIED="1410881491920" TEXT="Aliquam sapien odio, ultricies eu elit vulputate, tempus lacinia eros."/>
+</node>
+</node>
 </node>
 </node>
 </map>
