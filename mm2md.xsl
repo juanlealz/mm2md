@@ -54,6 +54,8 @@ title: </xsl:text>
     <xsl:apply-templates mode="bullet">
          <xsl:with-param name="bullet" select="'- '"/>
     </xsl:apply-templates>
+    <xsl:text>
+</xsl:text>
 </xsl:template>
 <xsl:template match="node[@COLOR='#000006']">
     <xsl:apply-templates select="." mode="text"/>
@@ -125,6 +127,11 @@ title: </xsl:text>
     <xsl:text>
 
 </xsl:text>
+    <xsl:if test="substring(attribute::TEXT, string-length(attribute::TEXT)) = ':'">
+    <xsl:apply-templates mode="bullet">
+         <xsl:with-param name="bullet" select="'- '"/>
+    </xsl:apply-templates>
+    </xsl:if>
 </xsl:template>
 
 <!-- Process text inside nodes -->
