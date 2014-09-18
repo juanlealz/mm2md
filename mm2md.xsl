@@ -20,7 +20,7 @@
 <xsl:template match="/map/node">
     <xsl:text>---
 title: </xsl:text>
-    <xsl:apply-templates select="." mode="text"/>
+    <xsl:value-of select="@TEXT"/>
     <xsl:text>
 ...
 
@@ -127,11 +127,12 @@ title: </xsl:text>
     <xsl:text>
 
 </xsl:text>
-    <xsl:if test="substring(attribute::TEXT, string-length(attribute::TEXT)) = ':'">
+    <!-- Continue processing children-->
     <xsl:apply-templates mode="bullet">
          <xsl:with-param name="bullet" select="'- '"/>
     </xsl:apply-templates>
-    </xsl:if>
+    <xsl:text>
+</xsl:text>
 </xsl:template>
 
 <!-- Process text inside nodes -->
