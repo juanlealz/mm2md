@@ -21,7 +21,7 @@
 </node>
 </node>
 </node>
-<node COLOR="#000001" CREATED="1410877805213" ID="ID_448788708" MODIFIED="1411407054467" POSITION="right" TEXT="Explicit bullets">
+<node COLOR="#000001" CREATED="1410877805213" ID="ID_448788708" MODIFIED="1411657196009" POSITION="right" TEXT="Explicit bullets">
 <font BOLD="true" NAME="SansSerif" SIZE="12"/>
 <icon BUILTIN="heading"/>
 <node CREATED="1410877884075" ID="ID_273699350" MODIFIED="1410877922376" TEXT="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."/>
@@ -57,7 +57,7 @@
 </node>
 </node>
 </node>
-<node COLOR="#000001" CREATED="1410877805213" ID="ID_708762188" MODIFIED="1411407066570" POSITION="right" TEXT="Auto-detect bullets">
+<node COLOR="#000001" CREATED="1410877805213" FOLDED="true" ID="ID_708762188" MODIFIED="1411656744933" POSITION="right" TEXT="Auto-detect bullets">
 <font BOLD="true" NAME="SansSerif" SIZE="12"/>
 <icon BUILTIN="heading"/>
 <node CREATED="1410877884075" ID="ID_446352051" MODIFIED="1410877922376" TEXT="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."/>
@@ -85,24 +85,27 @@
 <node COLOR="#000001" CREATED="1411047694537" ID="ID_896821589" MODIFIED="1411407066571" POSITION="right" TEXT="Multi-node paragraphs">
 <font BOLD="true" NAME="SansSerif" SIZE="12"/>
 <icon BUILTIN="heading"/>
-<node COLOR="#000002" CREATED="1410877825746" ID="ID_823418623" MODIFIED="1411399061971" TEXT="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ">
-<icon BUILTIN="page_white_text"/>
+<node COLOR="#000002" CREATED="1410877825746" ID="ID_823418623" MODIFIED="1411658106468" TEXT="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ">
+<icon BUILTIN="multi-node_paragraph"/>
 <node CREATED="1411047736194" ID="ID_1942124075" MODIFIED="1411398456210" TEXT="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."/>
-<node CREATED="1411398456232" ID="ID_442967426" MODIFIED="1411398456234" TEXT="Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
+<node CREATED="1411398456232" ID="ID_442967426" MODIFIED="1411398456234" TEXT="Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.">
+<node CREATED="1410881491927" ID="ID_74625298" MODIFIED="1410883118337" TEXT="Nam consequat augue in pharetra elementum."/>
+<node CREATED="1410883118343" ID="ID_610918074" MODIFIED="1410883122841" TEXT="In vel felis vel ipsum malesuada volutpat."/>
+</node>
 <node CREATED="1410883122841" ID="ID_351705805" MODIFIED="1410883122843" TEXT="Vestibulum nisl massa, posuere eu nulla a, vulputate porttitor dui. Pellentesque cursus dui id purus molestie, et auctor purus condimentum. In nisi quam, ullamcorper vel condimentum vel, posuere a ante. Mauris est arcu, feugiat vel metus ac, porttitor bibendum ex."/>
+<node CREATED="1410881491927" ID="ID_1672651651" MODIFIED="1410883118337" TEXT="Nam consequat augue in pharetra elementum."/>
+<node CREATED="1410883118343" ID="ID_1017219121" MODIFIED="1410883122841" TEXT="In vel felis vel ipsum malesuada volutpat."/>
 </node>
 <node CREATED="1410877922385" ID="ID_987721916" MODIFIED="1410888833304" TEXT="Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat:">
 <font NAME="SansSerif" SIZE="12"/>
 <node CREATED="1410877928912" ID="ID_567093087" MODIFIED="1411047811892" TEXT="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."/>
-<node COLOR="#000002" CREATED="1410877935264" ID="ID_612811898" MODIFIED="1411399067082" TEXT="Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.">
+<node COLOR="#000002" CREATED="1410877935264" ID="ID_612811898" MODIFIED="1411658858812" TEXT="Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.">
 <font NAME="SansSerif" SIZE="12"/>
-<icon BUILTIN="page_white_text"/>
-<node CREATED="1410878152385" ID="ID_1961208844" MODIFIED="1411047820226" TEXT="Mauris nec nunc eleifend, finibus justo id, finibus ex.">
-<node CREATED="1410881491927" ID="ID_1668660788" MODIFIED="1410883118337" TEXT="Nam consequat augue in pharetra elementum."/>
-<node CREATED="1410883118343" ID="ID_197628434" MODIFIED="1410883122841" TEXT="In vel felis vel ipsum malesuada volutpat."/>
-</node>
+<icon BUILTIN="multi-node_paragraph"/>
+<node CREATED="1410878152385" ID="ID_1961208844" MODIFIED="1411047820226" TEXT="Mauris nec nunc eleifend, finibus justo id, finibus ex."/>
 <node CREATED="1410881486072" ID="ID_1434943385" MODIFIED="1410881491920" TEXT="Aliquam sapien odio, ultricies eu elit vulputate, tempus lacinia eros."/>
 </node>
+<node CREATED="1410883118343" ID="ID_1651125380" MODIFIED="1410883122841" TEXT="In vel felis vel ipsum malesuada volutpat."/>
 </node>
 </node>
 </node>

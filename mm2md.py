@@ -5,13 +5,26 @@ from xml.etree import ElementTree
 from sys import argv
 
 # Recursive		 
-def print_node (e, header_depth=0, bullet=None, bullet_depth=0, parent_icons=None):
+def print_node (e, header_depth=0, bullet=None, bullet_depth=0, multinode_paragraph=False):
 	#parse icons
 	icons=[]
 	for icon in e.findall("icon"):
 		icons.append(icon.attrib.get("BUILTIN"))
 	icons=set(icons)
-	
+
+	#multi-node paragraph and bullets
+	next_bullet=None
+	if "multi-node_paragraph" in icons:
+		next_multinode_paragraph=True
+	else:
+		next_multinode_paragraph=False
+	#TODO: check after-comments
+	if (not "multi-node_paragraph" in icons) and e.find("node") is not None:
+		if not "heading" in icons or "bullets" in icons:
+			next_bullet="-"
+		if "numbers" in icons:
+			next_bullet="1."
+		
 	#document title
 	if header_depth==0:
 		print "---"
@@ -19,7 +32,7 @@ def print_node (e, header_depth=0, bullet=None, bullet_depth=0, parent_icons=Non
 		print e.attrib.get("TEXT").encode('latin-1')
 		print "...\n"
 		for node in e.findall("node"):
-			print_node(node, header_depth+1, parent_icons=icons)
+			print_node(node, header_depth+1, multinode_paragraph=next_multinode_paragraph)
 		return
 
 	#comments
@@ -27,50 +40,65 @@ def print_node (e, header_depth=0, bullet=None, bullet_depth=0, parent_icons=Non
 		return
 	if "comment" in icons:
 		for node in e.findall("node"):
-			print_node(node, header_depth, bullet, bullet_depth, parent_icons)
+			print_node(node, header_depth, bullet, bullet_depth, multinode_paragraph=next_multinode_paragraph)
+		if "multi-node_paragraph" in icons and not multinode_paragraph:
+			print "\n\n",			
 		return
-	
-	#prefix
+
+	#heading
 	if "heading" in icons:
 		print "#"*header_depth,
+		print e.attrib.get("TEXT").encode('latin-1'),
+		print "\n\n",
+		for node in e.findall("node"):
+			print_node(node, header_depth+1, bullet=next_bullet, bullet_depth=bullet_depth, multinode_paragraph=next_multinode_paragraph)
+		return
+	
+	#bullet-list start
+	if bullet is None and next_bullet is not None:
+		print e.attrib.get("TEXT").encode('latin-1'),
+		print "\n\n",
+		for node in e.findall("node"):
+			print_node(node, header_depth, bullet=next_bullet, bullet_depth=bullet_depth, multinode_paragraph=next_multinode_paragraph)
+		print "\n",
+		return
+
+	#bullet-list item
 	if bullet is not None:
 		print "    "*bullet_depth+bullet,
-		bullet_depth += 1
-
-	#text
-	print e.attrib.get("TEXT").encode('latin-1'),
-
-	#newlines
-	# - 2 when it is a header
-	# - 2 when it is a normal paragraph
-	# - 1 when it is a bullet list item
-	# - 0 when it is part of a multi-node paragraph
-	if "page_white_text" in icons or "page_white_text" in parent_icons:
+		print e.attrib.get("TEXT").encode('latin-1'),
+		if not "multi-node_paragraph" in icons:
+			print "\n",
+		for node in e.findall("node"):
+			print_node(node, header_depth, bullet=next_bullet, bullet_depth=bullet_depth+1, multinode_paragraph=next_multinode_paragraph)
+		if "multi-node_paragraph" in icons:
+			print "\n",
+		return
+		
+	#multi-node paragraph header
+	if "multi-node_paragraph" in icons:
+		print e.attrib.get("TEXT").encode('latin-1'),
 		print " ",
-	elif bullet is not None:
-		print "\n",
-	else:
-		print "\n\n",
-		
-	#prepare recursion
-	next_bullet="-"
-	if "numbers" in icons:
-		next_bullet="1."
-	if "heading" in icons:
-		header_depth +=1
-		next_bullet=None
-	if "page_white_text" in icons:
-		next_bullet=bullet
-		
-	#recurse
-	for node in e.findall("node"):
-		print_node(node, header_depth, next_bullet, bullet_depth, parent_icons)
+		for node in e.findall("node"):
+			print_node(node, header_depth, bullet=next_bullet, bullet_depth=bullet_depth, multinode_paragraph=next_multinode_paragraph)
+		if not multinode_paragraph:
+			print "\n\n",
+		return		
 	
-	#after subtree
-	# - 1 when it is a first-level bullet list header (has children)  
-	if bullet_depth==0 and bullet is None and next_bullet is not None:
-		print "\n",
+	#multi-node paragraph item
+	if multinode_paragraph:
+		print e.attrib.get("TEXT").encode('latin-1'),
+		#print "",
+		for node in e.findall("node"):
+			print_node(node, header_depth, bullet=next_bullet, bullet_depth=bullet_depth, multinode_paragraph=next_multinode_paragraph)
+		return
+		
+	#one-node paragraph
+	if bullet is None and next_bullet is None:
+		print e.attrib.get("TEXT").encode('latin-1'),
+		print "\n\n",
 
+	
 #Start	
 et = ElementTree.parse(argv[1])
 print_node(et.find("node"))
