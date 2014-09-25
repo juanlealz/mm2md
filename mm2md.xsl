@@ -121,6 +121,23 @@ title: </xsl:text>
     </xsl:apply-templates>
 </xsl:template>
 
+<!-- Multi-node paragraphs -->
+<xsl:template match="node[@COLOR='#000002']">
+    <xsl:apply-templates select="." mode="text"/>
+    <!-- Continue processing children-->
+    <xsl:apply-templates/>
+    <xsl:text>
+
+</xsl:text>
+</xsl:template>
+<xsl:template match="node[@COLOR='#000002']/node">
+    <xsl:apply-templates select="." mode="text"/>
+    <!-- Continue processing children-->
+    <xsl:apply-templates mode="bullet">
+         <xsl:with-param name="bullet" select="'- '"/>
+    </xsl:apply-templates>
+</xsl:template>
+
 <!-- Default nodes -->
 <xsl:template match="node">
     <xsl:apply-templates select="." mode="text"/>

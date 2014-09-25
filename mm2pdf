@@ -1,4 +1,4 @@
  #!/bin/bash
 . $HOME/.config/user-dirs.dirs
-xsltproc `dirname $0`/mm2md.xsl "$1" | recode html..utf8 | pandoc - -o "$XDG_DOWNLOAD_DIR"/"`basename \"$1\"`".pdf -V numbersections -V fontsize=11pt -V fontfamily=times
+python `dirname $0`/mm2md.py "$1" | recode html..utf8 | pandoc - -o "$XDG_DOWNLOAD_DIR"/"`basename \"$1\"`".pdf -V numbersections -V fontsize=11pt -V fontfamily=times
 xdg-open "$XDG_DOWNLOAD_DIR"/"`basename \"$1\"`".pdf
