@@ -14,16 +14,14 @@ def print_node (e, header_depth=0, bullet=None, bullet_depth=0, multinode_paragr
 
 	#multi-node paragraph and bullets
 	next_bullet=None
+	if "numbers" in icons:
+		next_bullet="1."
+	if "bullets" in icons:
+		next_bullet="-"
 	if "multi-node_paragraph" in icons:
 		next_multinode_paragraph=True
 	else:
 		next_multinode_paragraph=False
-	#TODO: check after-comments
-	if (not "multi-node_paragraph" in icons) and e.find("node") is not None:
-		if not "heading" in icons or "bullets" in icons:
-			next_bullet="-"
-		if "numbers" in icons:
-			next_bullet="1."
 		
 	#document title
 	if header_depth==0:
@@ -53,22 +51,24 @@ def print_node (e, header_depth=0, bullet=None, bullet_depth=0, multinode_paragr
 		for node in e.findall("node"):
 			print_node(node, header_depth+1, bullet=next_bullet, bullet_depth=bullet_depth, multinode_paragraph=next_multinode_paragraph)
 		return
-	
+
 	#bullet-list start
-	if bullet is None and next_bullet is not None:
+	if bullet is None and ("bullets" in icons or "numbers" in icons):
 		print e.attrib.get("TEXT").encode('latin-1'),
 		print "\n\n",
 		for node in e.findall("node"):
 			print_node(node, header_depth, bullet=next_bullet, bullet_depth=bullet_depth, multinode_paragraph=next_multinode_paragraph)
 		print "\n",
 		return
-
+		
 	#bullet-list item
 	if bullet is not None:
 		print "    "*bullet_depth+bullet,
 		print e.attrib.get("TEXT").encode('latin-1'),
 		if not "multi-node_paragraph" in icons:
 			print "\n",
+		if next_bullet is None and not "multi-node_paragraph" in icons:
+			next_bullet="-"
 		for node in e.findall("node"):
 			print_node(node, header_depth, bullet=next_bullet, bullet_depth=bullet_depth+1, multinode_paragraph=next_multinode_paragraph)
 		if "multi-node_paragraph" in icons:
@@ -88,16 +88,23 @@ def print_node (e, header_depth=0, bullet=None, bullet_depth=0, multinode_paragr
 	#multi-node paragraph item
 	if multinode_paragraph:
 		print e.attrib.get("TEXT").encode('latin-1'),
-		#print "",
 		for node in e.findall("node"):
-			print_node(node, header_depth, bullet=next_bullet, bullet_depth=bullet_depth, multinode_paragraph=next_multinode_paragraph)
+			print_node(node, header_depth, bullet=None, bullet_depth=bullet_depth, multinode_paragraph=True)
 		return
 		
-	#one-node paragraph
-	if bullet is None and next_bullet is None:
+	#implicit bullet-list start
+	if e.find("node") is not None:
+		next_bullet="-"
 		print e.attrib.get("TEXT").encode('latin-1'),
 		print "\n\n",
+		for node in e.findall("node"):
+			print_node(node, header_depth, bullet=next_bullet, bullet_depth=bullet_depth, multinode_paragraph=next_multinode_paragraph)
+		print "\n",
+		return
 
+	#one-node paragraph
+	print e.attrib.get("TEXT").encode('latin-1'),
+	print "\n\n",
 	
 #Start	
 et = ElementTree.parse(argv[1])

@@ -88,12 +88,16 @@
 <node COLOR="#000002" CREATED="1410877825746" ID="ID_823418623" MODIFIED="1411658106468" TEXT="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ">
 <icon BUILTIN="multi-node_paragraph"/>
 <node CREATED="1411047736194" ID="ID_1942124075" MODIFIED="1411398456210" TEXT="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."/>
-<node CREATED="1411398456232" ID="ID_442967426" MODIFIED="1411398456234" TEXT="Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.">
-<node CREATED="1410881491927" ID="ID_74625298" MODIFIED="1410883118337" TEXT="Nam consequat augue in pharetra elementum."/>
-<node CREATED="1410883118343" ID="ID_610918074" MODIFIED="1410883122841" TEXT="In vel felis vel ipsum malesuada volutpat."/>
+<node COLOR="#000005" CREATED="1411398456232" ID="ID_442967426" MODIFIED="1412012363203" TEXT="Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.">
+<icon BUILTIN="bullets"/>
+<node CREATED="1410881491927" ID="ID_74625298" MODIFIED="1412012363199" TEXT="Nam consequat augue in pharetra elementum."/>
+<node CREATED="1410883118343" ID="ID_610918074" MODIFIED="1412012363203" TEXT="In vel felis vel ipsum malesuada volutpat."/>
 </node>
 <node CREATED="1410883122841" ID="ID_351705805" MODIFIED="1410883122843" TEXT="Vestibulum nisl massa, posuere eu nulla a, vulputate porttitor dui. Pellentesque cursus dui id purus molestie, et auctor purus condimentum. In nisi quam, ullamcorper vel condimentum vel, posuere a ante. Mauris est arcu, feugiat vel metus ac, porttitor bibendum ex."/>
-<node CREATED="1410881491927" ID="ID_1672651651" MODIFIED="1410883118337" TEXT="Nam consequat augue in pharetra elementum."/>
+<node CREATED="1410881491927" ID="ID_1672651651" MODIFIED="1412012385036" TEXT="Nam consequat augue in pharetra elementum.">
+<node CREATED="1410881491927" ID="ID_854950140" MODIFIED="1412012363591" TEXT="Nam consequat augue in pharetra elementum."/>
+<node CREATED="1410883118343" ID="ID_757420767" MODIFIED="1412012363595" TEXT="In vel felis vel ipsum malesuada volutpat."/>
+</node>
 <node CREATED="1410883118343" ID="ID_1017219121" MODIFIED="1410883122841" TEXT="In vel felis vel ipsum malesuada volutpat."/>
 </node>
 <node CREATED="1410877922385" ID="ID_987721916" MODIFIED="1410888833304" TEXT="Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat:">
