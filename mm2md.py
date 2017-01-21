@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: latin-1 -*-
+# -*- coding: UTF8 -*-
 
 from xml.etree import ElementTree
 from sys import argv
@@ -28,7 +28,7 @@ def print_node (e, header_depth=0, bullet=None, bullet_depth=0, multinode_paragr
 	if header_depth==0:
 		print "---"
 		print "title: ",
-		print e.attrib.get("TEXT").encode('latin-1')
+		print e.attrib.get("TEXT").encode('UTF8')
 		print "...\n"
 		for node in e.findall("node"):
 			print_node(node, header_depth+1, multinode_paragraph=next_multinode_paragraph)
@@ -45,14 +45,14 @@ def print_node (e, header_depth=0, bullet=None, bullet_depth=0, multinode_paragr
 	#heading
 	elif "heading" in icons:
 		print "#"*header_depth,
-		print e.attrib.get("TEXT").encode('latin-1'),
+		print e.attrib.get("TEXT").encode('UTF8'),
 		print "\n\n",
 		for node in e.findall("node"):
 			print_node(node, header_depth+1, bullet=next_bullet, bullet_depth=bullet_depth, multinode_paragraph=next_multinode_paragraph)
 
 	#bullet-list start
 	elif bullet is None and ("bullets" in icons or "numbers" in icons):
-		print e.attrib.get("TEXT").encode('latin-1'),
+		print e.attrib.get("TEXT").encode('UTF8'),
 		print "\n\n",
 		for node in e.findall("node"):
 			print_node(node, header_depth, bullet=next_bullet, bullet_depth=bullet_depth, multinode_paragraph=next_multinode_paragraph)
@@ -61,7 +61,10 @@ def print_node (e, header_depth=0, bullet=None, bullet_depth=0, multinode_paragr
 	#bullet-list item
 	elif bullet is not None:
 		print "    "*bullet_depth+bullet,
-		print e.attrib.get("TEXT").encode('latin-1'),
+		if e.attrib.get("TEXT") is None:
+			print ""
+		else:
+			print e.attrib.get("TEXT").encode('UTF8'),
 		if not "multi-node_paragraph" in icons:
 			print "\n",
 		if next_bullet is None and not "multi-node_paragraph" in icons:
@@ -73,7 +76,7 @@ def print_node (e, header_depth=0, bullet=None, bullet_depth=0, multinode_paragr
 		
 	#multi-node paragraph header
 	elif "multi-node_paragraph" in icons:
-		print e.attrib.get("TEXT").encode('latin-1'),
+		print e.attrib.get("TEXT").encode('UTF8'),
 		print " ",
 		for node in e.findall("node"):
 			print_node(node, header_depth, bullet=next_bullet, bullet_depth=bullet_depth, multinode_paragraph=next_multinode_paragraph)
@@ -82,14 +85,14 @@ def print_node (e, header_depth=0, bullet=None, bullet_depth=0, multinode_paragr
 	
 	#multi-node paragraph item
 	elif multinode_paragraph:
-		print e.attrib.get("TEXT").encode('latin-1'),
+		print e.attrib.get("TEXT").encode('UTF8'),
 		for node in e.findall("node"):
 			print_node(node, header_depth, bullet=None, bullet_depth=bullet_depth, multinode_paragraph=True)
 		
 	#implicit bullet-list start
 	elif e.find("node") is not None:
 		next_bullet="-"
-		print e.attrib.get("TEXT").encode('latin-1'),
+		print e.attrib.get("TEXT").encode('UTF8'),
 		print "\n\n",
 		for node in e.findall("node"):
 			print_node(node, header_depth, bullet=next_bullet, bullet_depth=bullet_depth, multinode_paragraph=next_multinode_paragraph)
@@ -98,7 +101,7 @@ def print_node (e, header_depth=0, bullet=None, bullet_depth=0, multinode_paragr
 
 	#one-node paragraph
 	else:
-		print e.attrib.get("TEXT").encode('latin-1'),
+		print e.attrib.get("TEXT").encode('UTF8'),
 		print "\n\n",
 	
 #Start	
